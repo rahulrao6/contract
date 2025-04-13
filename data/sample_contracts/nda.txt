@@ -1,0 +1,57 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Mutual Non-Disclosure Agreement (this "Agreement") is entered into as of April 1, 2023 (the "Effective Date") by and between ABC Company, Inc., a Delaware corporation with its principal place of business at 123 Main Street, San Francisco, CA 94105 ("Company"), and XYZ Corporation, a California corporation with its principal place of business at 456 Market Street, San Francisco, CA 94107 ("Counterparty").
+
+1. PURPOSE
+
+Company and Counterparty wish to explore a potential business relationship in connection with a possible strategic partnership (the "Purpose"). In connection with the Purpose, each party may disclose to the other certain confidential technical and business information which the disclosing party desires the receiving party to treat as confidential.
+
+2. CONFIDENTIAL INFORMATION
+
+"Confidential Information" means any information disclosed by either party to the other party, either directly or indirectly, in writing, orally or by inspection of tangible objects, which is designated as "Confidential," "Proprietary" or some similar designation, or that should reasonably be understood to be confidential from the context of disclosure. Confidential Information includes, without limitation, technical data, trade secrets, know-how, research, product plans, products, services, customer lists, markets, software, developments, inventions, processes, formulas, technology, designs, drawings, engineering, hardware configuration information, marketing, finances or other business information.
+
+3. NON-USE AND NON-DISCLOSURE
+
+Each party agrees not to use any Confidential Information of the other party for any purpose except to evaluate and engage in discussions concerning the Purpose. Each party agrees not to disclose any Confidential Information of the other party to third parties or to such party's employees, except to those employees who are required to have the information in order to evaluate or engage in discussions concerning the Purpose.
+
+4. MAINTENANCE OF CONFIDENTIALITY
+
+Each party agrees that it shall take reasonable measures to protect the secrecy of and avoid disclosure and unauthorized use of the Confidential Information of the other party. Without limiting the foregoing, each party shall take at least those measures that it takes to protect its own most highly confidential information. Each party shall immediately notify the other party in the event of any unauthorized use or disclosure of the Confidential Information.
+
+5. TERM
+
+This Agreement shall remain in effect for a period of 2 years from the Effective Date. The obligations of each receiving party hereunder shall survive until such time as all Confidential Information of the other party disclosed hereunder becomes publicly known and made generally available through no action or inaction of the receiving party.
+
+6. NO WARRANTY
+
+ALL CONFIDENTIAL INFORMATION IS PROVIDED "AS IS". EACH PARTY MAKES NO WARRANTIES, EXPRESS, IMPLIED OR OTHERWISE, REGARDING ITS ACCURACY, COMPLETENESS OR PERFORMANCE.
+
+7. RETURN OF MATERIALS
+
+All documents and other tangible objects containing or representing Confidential Information which have been disclosed by either party to the other party, and all copies thereof which are in the possession of the other party, shall be and remain the property of the disclosing party and shall be promptly returned to the disclosing party upon the disclosing party's written request.
+
+8. NO LICENSE
+
+Nothing in this Agreement is intended to grant any rights to either party under any patent, mask work right or copyright of the other party, nor shall this Agreement grant any party any rights in or to the Confidential Information of the other party except as expressly set forth herein.
+
+9. GOVERNING LAW
+
+This Agreement shall be governed by and construed in accordance with the laws of the State of California, without regard to conflicts of law principles. Any dispute arising under this Agreement shall be subject to the exclusive jurisdiction of the state and federal courts located in San Francisco, California, and the parties hereby consent to the personal jurisdiction of these courts.
+
+10. ENTIRE AGREEMENT
+
+This Agreement constitutes the entire agreement between the parties with respect to the subject matter hereof, and supersedes all prior or contemporaneous oral or written agreements concerning such subject matter. This Agreement may only be changed by mutual agreement of authorized representatives of the parties in writing.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the Effective Date.
+
+ABC COMPANY, INC.
+
+By:
+Name: Jane Smith
+Title: Chief Executive Officer
+
+XYZ CORPORATION
+
+By: 
+Name: John Doe
+Title: President

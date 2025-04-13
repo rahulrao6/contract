@@ -1,0 +1,115 @@
+MASTER SERVICES AGREEMENT
+
+This Master Services Agreement (this "Agreement") is entered into as of February 10, 2023 (the "Effective Date") by and between DataTech Solutions, LLC, a Nevada limited liability company with offices at 555 Technology Drive, Las Vegas, NV 89101 ("Provider"), and Global Enterprises, Inc., a Delaware corporation with offices at 888 Business Avenue, New York, NY 10001 ("Client").
+
+1. SERVICES
+
+1.1 Service Orders. Provider shall provide to Client the services ("Services") and deliverables ("Deliverables") as set forth in one or more service orders that reference this Agreement (each, a "Service Order"). Each Service Order shall specify the Services to be performed, Deliverables to be provided, pricing, timeline, and other relevant terms.
+
+1.2 Personnel. Provider shall assign qualified personnel to perform the Services. Provider reserves the right to determine which of its personnel shall be assigned to perform the Services, and to replace or reassign such personnel during the term of this Agreement.
+
+1.3 Performance Standards. Provider shall perform the Services in a professional and workmanlike manner in accordance with industry standards and the specifications set forth in the applicable Service Order.
+
+2. FEES AND PAYMENT
+
+2.1 Fees. Client shall pay to Provider the fees specified in each Service Order ("Fees"). If a Service Order provides for payment on a time and materials basis, Provider shall invoice Client monthly for the hours worked and materials provided during the preceding month.
+
+2.2 Expenses. Client shall reimburse Provider for all reasonable travel and out-of-pocket expenses incurred by Provider in connection with the performance of the Services, provided that such expenses conform to Client's standard travel and expense policy provided to Provider.
+
+2.3 Invoices. Provider shall invoice Client for Fees and expenses as specified in the applicable Service Order. All invoices shall be due and payable within thirty (30) days of the invoice date. Late payments shall bear interest at the rate of 1.5% per month or the maximum rate allowed by law, whichever is less.
+
+2.4 Taxes. All Fees are exclusive of taxes. Client shall be responsible for all sales, use, excise, value added, and other taxes, fees, and charges assessed on the provision of the Services.
+
+2.5 Fee Increases. Provider reserves the right to increase its standard fees once per calendar year upon at least sixty (60) days' prior written notice to Client.
+
+3. TERM AND TERMINATION
+
+3.1 Term. This Agreement shall commence on the Effective Date and shall continue until terminated as provided herein (the "Term").
+
+3.2 Termination for Convenience. Either party may terminate this Agreement or any Service Order upon sixty (60) days' prior written notice to the other party.
+
+3.3 Termination for Cause. Either party may terminate this Agreement or any Service Order immediately upon written notice if the other party materially breaches this Agreement or the applicable Service Order and fails to cure such breach within thirty (30) days after receipt of written notice of such breach.
+
+3.4 Effect of Termination. Upon termination of this Agreement or any Service Order: (a) Client shall pay Provider for all Services performed and expenses incurred up to the effective date of termination; (b) Provider shall deliver to Client all Deliverables completed or in progress as of the effective date of termination; and (c) each party shall return or destroy all Confidential Information of the other party in its possession.
+
+4. INTELLECTUAL PROPERTY RIGHTS
+
+4.1 Client Materials. Client shall own all right, title and interest in and to any materials provided by Client to Provider for use in performing the Services ("Client Materials").
+
+4.2 Provider Materials. Provider shall own all right, title and interest in and to any tools, methodologies, templates, and other materials developed by Provider prior to or independently of this Agreement and used in the performance of the Services ("Provider Materials").
+
+4.3 Deliverables. Subject to Sections 4.1 and 4.2, upon full payment of all applicable Fees, Provider hereby assigns to Client all right, title, and interest in and to the Deliverables.
+
+4.4 License to Provider Materials. To the extent that any Provider Materials are incorporated into the Deliverables, Provider hereby grants to Client a perpetual, worldwide, non-exclusive, royalty-free license to use such Provider Materials solely in connection with the Deliverables.
+
+5. CONFIDENTIALITY
+
+5.1 Definition. "Confidential Information" means any non-public information disclosed by one party to the other party, either directly or indirectly, in writing, orally or by inspection of tangible objects, which is designated as "Confidential" or "Proprietary" or by similar words, or which a reasonable person would understand to be confidential given the nature of the information and the circumstances of disclosure.
+
+5.2 Exclusions. Confidential Information does not include information that: (a) is or becomes generally known to the public through no fault of the receiving party; (b) was known to the receiving party prior to its disclosure by the disclosing party; (c) is received from a third party without a duty of confidentiality; or (d) is independently developed by the receiving party without use of or reference to the disclosing party's Confidential Information.
+
+5.3 Obligations. Each party shall: (a) maintain the confidentiality of the other party's Confidential Information using the same degree of care that it uses to protect its own confidential information, but in no event less than reasonable care; (b) not disclose such Confidential Information to any third party except as expressly permitted herein; and (c) not use such Confidential Information for any purpose outside the scope of this Agreement.
+
+5.4 Permitted Disclosures. Each party may disclose the other party's Confidential Information to its employees, agents, contractors, and legal advisors who have a need to know such information, provided that such persons are bound by confidentiality obligations no less restrictive than those contained herein.
+
+5.5 Required Disclosures. A party may disclose the other party's Confidential Information to the extent required by law, regulation, or court order, provided that the receiving party provides the disclosing party with prompt written notice of such requirement to allow the disclosing party to seek a protective order or other appropriate remedy.
+
+6. REPRESENTATIONS AND WARRANTIES
+
+6.1 Mutual Representations and Warranties. Each party represents and warrants that: (a) it has the full power and authority to enter into this Agreement and perform its obligations hereunder; and (b) its performance of this Agreement will not conflict with, result in a breach of, or constitute a default under any other agreement to which it is a party or by which it is bound.
+
+6.2 Provider Warranties. Provider represents and warrants that: (a) it will perform the Services in a professional and workmanlike manner in accordance with industry standards; (b) the Services and Deliverables will conform to the specifications set forth in the applicable Service Order; and (c) the Deliverables will not infringe any third-party intellectual property rights.
+
+6.3 Disclaimer. EXCEPT AS EXPRESSLY PROVIDED IN THIS AGREEMENT, PROVIDER MAKES NO OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING, WITHOUT LIMITATION, ANY IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+7. LIMITATION OF LIABILITY
+
+7.1 Exclusion of Damages. IN NO EVENT SHALL EITHER PARTY BE LIABLE TO THE OTHER PARTY OR TO ANY THIRD PARTY FOR ANY SPECIAL, INDIRECT, INCIDENTAL, CONSEQUENTIAL, PUNITIVE, OR EXEMPLARY DAMAGES ARISING OUT OF OR RELATED TO THIS AGREEMENT, UNDER ANY THEORY OF LIABILITY.
+
+7.2 Limitation of Liability. EACH PARTY'S TOTAL CUMULATIVE LIABILITY ARISING OUT OF OR RELATED TO THIS AGREEMENT, UNDER ANY THEORY OF LIABILITY, SHALL NOT EXCEED THE TOTAL FEES PAID OR PAYABLE BY CLIENT TO PROVIDER UNDER THE APPLICABLE SERVICE ORDER DURING THE TWELVE (12) MONTH PERIOD PRECEDING THE EVENT GIVING RISE TO LIABILITY.
+
+7.3 Exceptions. The limitations of liability in Sections 7.1 and 7.2 shall not apply to: (a) breaches of Section 5 (Confidentiality); (b) a party's indemnification obligations under Section 8; (c) a party's gross negligence or willful misconduct; or (d) matters for which liability cannot be limited under applicable law.
+
+8. INDEMNIFICATION
+
+8.1 Provider Indemnity. Provider shall defend, indemnify, and hold harmless Client from and against any and all third-party claims, actions, suits, proceedings, and demands arising from or related to any allegation that the Deliverables infringe any third-party intellectual property right.
+
+8.2 Client Indemnity. Client shall defend, indemnify, and hold harmless Provider from and against any and all third-party claims, actions, suits, proceedings, and demands arising from or related to Client Materials or Client's use of the Deliverables in a manner not authorized by this Agreement.
+
+8.3 Indemnification Procedure. The indemnified party shall: (a) promptly notify the indemnifying party in writing of any claim subject to indemnification; (b) give the indemnifying party sole control over the defense and settlement of such claim; and (c) provide the indemnifying party with reasonable assistance in the defense and settlement of such claim, at the indemnifying party's expense.
+
+9. GENERAL PROVISIONS
+
+9.1 Independent Contractors. The relationship between the parties is that of independent contractors. Nothing in this Agreement shall be construed as creating any agency, partnership, joint venture, or other form of joint enterprise, employment, or fiduciary relationship between the parties.
+
+9.2 Subcontractors. Provider may engage subcontractors to perform the Services, provided that Provider shall remain fully responsible for the performance of such subcontractors.
+
+9.3 Notices. All notices under this Agreement shall be in writing and shall be deemed given when delivered personally, by email (with confirmation of receipt), or by certified mail (return receipt requested) to the address specified in the preamble or to such other address as the party may specify in writing.
+
+9.4 Assignment. Neither party may assign this Agreement without the prior written consent of the other party, except that either party may assign this Agreement to any successor to all or substantially all of its business or assets to which this Agreement relates.
+
+9.5 Force Majeure. Neither party shall be liable for any failure or delay in performance under this Agreement due to causes beyond its reasonable control.
+
+9.6 Governing Law and Venue. This Agreement shall be governed by and construed in accordance with the laws of the State of New York, without regard to its conflict of laws principles. Any dispute arising out of or relating to this Agreement shall be brought exclusively in the state or federal courts located in New York County, New York, and the parties hereby consent to the personal jurisdiction and venue of these courts.
+
+9.7 Entire Agreement. This Agreement, including all Service Orders, constitutes the entire agreement between the parties with respect to the subject matter hereof and supersedes all prior and contemporaneous agreements, proposals, or representations, written or oral, concerning its subject matter.
+
+9.8 Amendment and Waiver. No amendment to this Agreement shall be valid unless it is in writing and signed by both parties. No waiver of any provision of this Agreement shall be effective unless it is in writing and signed by the party against whom such waiver is sought to be enforced.
+
+9.9 Severability. If any provision of this Agreement is held to be invalid or unenforceable, such provision shall be deemed restated to reflect as nearly as possible the original intentions of the parties in accordance with applicable law, and the remaining provisions shall remain in full force and effect.
+
+9.10 Counterparts. This Agreement may be executed in counterparts, each of which shall be deemed an original, but all of which together shall constitute one and the same instrument.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the Effective Date.
+
+DATATECH SOLUTIONS, LLC
+
+By: ____________________________
+Name: Robert Lee
+Title: CEO
+
+GLOBAL ENTERPRISES, INC.
+
+By: ____________________________
+Name: Maria Garcia
+Title: CIO

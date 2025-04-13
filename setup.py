@@ -1,0 +1,38 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="contract-analyzer",
+    version="1.0.0",
+    description="Advanced NLP system for contract analysis",
+    author="Your Name",
+    author_email="your.email@example.com",
+    packages=find_packages(),
+    python_requires=">=3.8,<4.0",
+    install_requires=[
+        "torch>=1.10.0",
+        "transformers>=4.18.0",
+        "sentence-transformers>=2.2.0",
+        "spacy>=3.4.0",
+        "nltk>=3.7.0",
+        "fastapi>=0.78.0",
+        "uvicorn>=0.17.6",
+        "python-multipart>=0.0.5",
+        "regex>=2022.4.24",
+        "unidecode>=1.3.4",
+        "scikit-learn>=1.1.1",
+        "numpy>=1.22.4",
+        "pandas>=1.4.2",
+        "PyMuPDF>=1.19.6",
+        "python-docx>=0.8.11",
+        "openpyxl>=3.0.10",
+        "cryptography>=37.0.2",
+    ],
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Legal Industry",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+    ],
+)

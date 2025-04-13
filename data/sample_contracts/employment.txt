@@ -1,0 +1,100 @@
+EMPLOYMENT AGREEMENT
+
+This Employment Agreement (the "Agreement") is made and entered into as of March 15, 2023 (the "Effective Date"), by and between TechCorp, Inc., a Delaware corporation (the "Company"), and Sarah Johnson, an individual residing at 789 Oak Lane, Portland, OR 97204 (the "Employee").
+
+WITNESSETH:
+
+WHEREAS, the Company desires to employ the Employee as Chief Technology Officer; and
+
+WHEREAS, the Employee desires to accept such employment on the terms and conditions set forth in this Agreement;
+
+NOW, THEREFORE, in consideration of the foregoing premises and the mutual covenants and agreements herein contained, the parties hereby agree as follows:
+
+1. EMPLOYMENT AND DUTIES
+
+1.1 Position. The Company hereby employs the Employee, and the Employee hereby accepts employment, as Chief Technology Officer of the Company, reporting directly to the Chief Executive Officer.
+
+1.2 Duties. The Employee shall devote her full business time, attention, skill, and efforts to the performance of her duties for the Company and shall not engage in any other business activities without the prior written approval of the Company.
+
+1.3 Location. The Employee shall perform her duties primarily at the Company's headquarters in Portland, Oregon, subject to reasonable travel as required by the Employee's position and duties.
+
+2. TERM
+
+2.1 Initial Term. The initial term of this Agreement shall begin on the Effective Date and shall continue for a period of three (3) years, unless earlier terminated as provided herein (the "Initial Term").
+
+2.2 Renewal. Following the Initial Term, this Agreement shall automatically renew for successive one-year periods (each, a "Renewal Term"), unless either party provides written notice of non-renewal to the other party at least ninety (90) days prior to the end of the Initial Term or any Renewal Term.
+
+3. COMPENSATION AND BENEFITS
+
+3.1 Base Salary. The Company shall pay the Employee a base salary of $250,000 per year (the "Base Salary"), payable in accordance with the Company's regular payroll practices. The Base Salary shall be reviewed annually by the Company's Board of Directors.
+
+3.2 Annual Bonus. The Employee shall be eligible to receive an annual performance bonus of up to 40% of her Base Salary (the "Annual Bonus"), based on performance criteria established by the Board of Directors.
+
+3.3 Equity Awards. Upon commencement of employment, the Employee shall be granted options to purchase 100,000 shares of the Company's common stock, which shall vest over a four-year period, with 25% vesting after one year of continuous employment and the remainder vesting in equal monthly installments over the following 36 months.
+
+3.4 Benefits. The Employee shall be eligible to participate in all employee benefit plans and programs generally available to employees of the Company, subject to the terms and conditions of such plans and programs.
+
+3.5 Expenses. The Company shall reimburse the Employee for all reasonable business expenses incurred in the performance of her duties, in accordance with the Company's expense reimbursement policies.
+
+3.6 Vacation. The Employee shall be entitled to four (4) weeks of paid vacation per year, in accordance with the Company's vacation policy.
+
+4. TERMINATION
+
+4.1 Termination by the Company for Cause. The Company may terminate the Employee's employment for Cause at any time, effective immediately upon written notice to the Employee. For purposes of this Agreement, "Cause" shall mean: (a) material breach by the Employee of this Agreement; (b) the Employee's conviction of, or plea of nolo contendere to, a felony or any crime involving moral turpitude; (c) the Employee's fraud, dishonesty, or misappropriation relating to the Company; or (d) the Employee's willful failure to perform her duties, which failure is not cured within thirty (30) days following written notice from the Company.
+
+4.2 Termination by the Company Without Cause. The Company may terminate the Employee's employment without Cause at any time, effective upon thirty (30) days' written notice to the Employee.
+
+4.3 Termination by the Employee. The Employee may terminate her employment at any time, effective upon thirty (30) days' written notice to the Company.
+
+4.4 Termination Due to Death or Disability. The Employee's employment shall terminate automatically upon her death, or upon written notice from the Company if the Employee is unable to perform her duties due to physical or mental disability for a period of ninety (90) consecutive days or one hundred twenty (120) days in any twelve-month period.
+
+5. SEVERANCE
+
+5.1 Termination Without Cause. If the Employee's employment is terminated by the Company without Cause, the Employee shall be entitled to receive: (a) any unpaid Base Salary through the termination date; (b) continuation of the Employee's Base Salary for six (6) months following the termination date; (c) a pro-rated Annual Bonus for the year of termination; and (d) if the Employee elects COBRA continuation coverage, payment of the COBRA premiums for six (6) months.
+
+5.2 Other Termination. If the Employee's employment is terminated for any reason other than by the Company without Cause, the Employee shall be entitled to receive only any unpaid Base Salary through the termination date.
+
+6. CONFIDENTIALITY
+
+6.1 Confidential Information. The Employee acknowledges that during her employment she will have access to Confidential Information of the Company. "Confidential Information" means all information that relates to the business, products, services, customers, suppliers, or operations of the Company, which is not generally known to the public.
+
+6.2 Non-Disclosure. The Employee shall not, during her employment or at any time thereafter, directly or indirectly, use or disclose any Confidential Information, except as required in the performance of her duties for the Company.
+
+7. INTELLECTUAL PROPERTY
+
+7.1 Work Product. The Employee agrees that all inventions, innovations, improvements, developments, methods, designs, analyses, drawings, reports, and all similar or related information that relate to the Company's actual or anticipated business, and which are conceived, developed, or made by the Employee during the term of her employment (collectively, "Work Product"), belong to the Company. The Employee will promptly disclose such Work Product to the Company and perform all actions reasonably requested by the Company to establish and confirm such ownership.
+
+8. NON-COMPETITION AND NON-SOLICITATION
+
+8.1 Non-Competition. During the Employee's employment and for a period of twelve (12) months following the termination of her employment for any reason, the Employee shall not, directly or indirectly, engage in any business that competes with the Company in any geographic area in which the Company conducts business.
+
+8.2 Non-Solicitation. During the Employee's employment and for a period of twelve (12) months following the termination of her employment for any reason, the Employee shall not, directly or indirectly, solicit or hire any employee, consultant, or contractor of the Company, or solicit any customer, client, or business partner of the Company.
+
+9. GENERAL PROVISIONS
+
+9.1 Governing Law. This Agreement shall be governed by and construed in accordance with the laws of the State of Oregon, without regard to conflicts of law principles.
+
+9.2 Entire Agreement. This Agreement constitutes the entire agreement between the parties with respect to the subject matter hereof and supersedes all prior negotiations, understandings, and agreements, whether written or oral.
+
+9.3 Amendment. This Agreement may not be modified or amended except by a written instrument signed by both parties.
+
+9.4 Waiver. No waiver of any provision of this Agreement shall be effective unless in writing and signed by the party against whom it is sought to be enforced.
+
+9.5 Severability. If any provision of this Agreement is held invalid or unenforceable, such provision shall be modified to the extent necessary to make it valid and enforceable, and the remaining provisions shall remain in full force and effect.
+
+9.6 Assignment. This Agreement may not be assigned by the Employee. The Company may assign this Agreement to any successor entity.
+
+9.7 Counterparts. This Agreement may be executed in counterparts, each of which shall be deemed an original, but all of which together shall constitute one and the same instrument.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the Effective Date.
+
+TECHCORP, INC.
+
+By: ____________________________
+Name: Michael Brown
+Title: Chief Executive Officer
+
+EMPLOYEE
+
+_________________________________
+Sarah Johnson
