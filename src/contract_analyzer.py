@@ -11,10 +11,7 @@ import asyncio
 from typing import Dict, List, Any, Optional, Union
 from dataclasses import dataclass, field, asdict
 from datetime import datetime
-import re  # Add this at the top
-import time
-from datetime import datetime
-import json
+import re  # Required for regex matching
 
 from src.config import Config
 from src.models.risk_detector import RiskDetectionModel
@@ -31,6 +28,7 @@ from src.utils.helpers import create_unique_id
 
 logger = logging.getLogger(__name__)
 
+# Data classes to hold analysis results
 @dataclass
 class DocumentMetadata:
     """Metadata about an analyzed document."""
@@ -109,11 +107,11 @@ class ContractAnalyzer:
         Initialize the contract analyzer.
         
         Args:
-            config: Configuration settings, or use defaults
+            config: Configuration settings, or use defaults.
         """
         self.config = config or Config()
         
-        # Initialize components
+        # Initialize core components with extended fallback logic
         self.document_parser = DocumentParser(max_file_size_mb=self.config.MAX_DOCUMENT_SIZE_MB)
         self.text_processor = TextProcessor(use_hierarchical_segmentation=self.config.ENABLE_HIERARCHICAL_SEGMENTATION)
         self.risk_library = RiskPatternLibrary()
@@ -121,7 +119,7 @@ class ContractAnalyzer:
         self.term_library = LegalTermLibrary()
         self.privacy_manager = PrivacyManager()
         
-        # Lazy loaded models - will be initialized when needed
+        # Lazy-loaded models
         self._risk_model = None
         self._classifier_model = None
         self._summarizer_model = None
@@ -176,19 +174,19 @@ class ContractAnalyzer:
         return self._extractor_model
     
     async def analyze_document(self, 
-                       file_content: Optional[bytes] = None, 
-                       filename: Optional[str] = None,
-                       text: Optional[str] = None) -> AnalysisResult:
+                               file_content: Optional[bytes] = None, 
+                               filename: Optional[str] = None,
+                               text: Optional[str] = None) -> AnalysisResult:
         """
         Analyze a contract document.
         
         Args:
-            file_content: Binary file content
-            filename: Name of the file
-            text: Plain text content (alternative to file)
+            file_content: Binary file content.
+            filename: Name of the file.
+            text: Plain text content (alternative to file).
             
         Returns:
-            Complete analysis results
+            Complete analysis results.
         """
         start_time = time.time()
         contract_id = str(uuid.uuid4())
@@ -214,8 +212,6 @@ class ContractAnalyzer:
                 redacted_text, pii_result = self.privacy_manager.redact_pii(normalized_text)
                 has_pii = bool(pii_result)
                 pii_types = list(pii_result.keys()) if pii_result else []
-                
-                # Use redacted text for further processing if PII was found
                 if has_pii:
                     processing_text = redacted_text
                     logger.info(f"PII detected in document: {pii_types}")
@@ -226,33 +222,31 @@ class ContractAnalyzer:
                 pii_types = []
                 processing_text = normalized_text
             
-            # Extract document metadata
+            # Extract document metadata with extended fallback checking
             metadata = self._extract_metadata(file_name, normalized_text, has_pii, pii_types)
             
-            # Segment document into sections
+            # Segment document into sections using robust segmentation methods
             sections = self.text_processor.segment_document(processing_text)
             
-            # Extract cross-references between sections
+            # Extract cross-references if enabled
             cross_references = self._extract_cross_references(sections) if self.config.ENABLE_CROSS_REFERENCE_DETECTION else {}
             
-            # Extract legal entities from sections
+            # Enhance each section with detected legal entities
             for section in sections:
                 entities = self.privacy_manager.detect_legal_entities(section.text)
                 section.extracted_entities.update(entities)
             
-            # Perform risk analysis
+            # Run rule-based risk analysis with fallback to ML-based detection if enabled
             risks = self._analyze_risks(sections)
             
-            # Generate summary
+            # Generate overall summary from important sections
             summary = self._generate_summary(processing_text, sections, metadata.detected_contract_type)
             
-            # Extract structured information
+            # Extract structured information using both ML and regex-based methods
             extracted_data = self._extract_information(processing_text)
             
-            # Calculate processing time
             processing_time_ms = int((time.time() - start_time) * 1000)
             
-            # Create and return analysis result
             return AnalysisResult(
                 contract_id=contract_id,
                 metadata=metadata,
@@ -271,8 +265,6 @@ class ContractAnalyzer:
         except Exception as e:
             logger.error(f"Error analyzing document: {str(e)}", exc_info=True)
             processing_time_ms = int((time.time() - start_time) * 1000)
-            
-            # Create error result
             return AnalysisResult(
                 contract_id=contract_id,
                 metadata=DocumentMetadata(
@@ -297,58 +289,33 @@ class ContractAnalyzer:
                 errors=[str(e)]
             )
     
-    def _extract_metadata(self, 
-                         file_name: str, 
-                         text: str, 
-                         has_pii: bool, 
-                         pii_types: List[str]) -> DocumentMetadata:
+    def _extract_metadata(self, file_name: str, text: str, has_pii: bool, pii_types: List[str]) -> DocumentMetadata:
         """
-        Extract metadata from document.
+        Extract metadata from document with detailed checks.
         
         Args:
-            file_name: Name of the file
-            text: Normalized text
-            has_pii: Whether PII was detected
-            pii_types: Types of PII detected
+            file_name: Name of the file.
+            text: Normalized text.
+            has_pii: Whether PII was detected.
+            pii_types: Types of PII detected.
             
         Returns:
-            Document metadata
+            Document metadata.
         """
-        # Basic file metadata
         metadata = DocumentMetadata(
             file_name=file_name,
             file_type=file_name.split('.')[-1] if '.' in file_name else "txt",
             file_size_kb=round(len(text.encode('utf-8')) / 1024, 2),
-            page_count=text.count("\f") + 1,  # Count form feed characters as page breaks
-            language="en",  # Default, could be enhanced with language detection
+            page_count=text.count("\f") + 1,
+            language="en",
             word_count=len(text.split()),
             contains_pii=has_pii,
             pii_types=pii_types
         )
         
-        # Contract type classification
-        type_scores = {}
-        for ctype, keywords in self.config.CONTRACT_TYPES.items():
-            # Count keyword occurrences with word boundary handling
-            score = sum(len(re.findall(r'\b' + re.escape(keyword) + r'\b', text.lower())) 
-                       for keyword in keywords)
-            type_scores[ctype] = score
-        
-        # Determine the most likely contract type
-        if max(type_scores.values(), default=0) > 0:
-            most_likely_type = max(type_scores.items(), key=lambda x: x[1])[0]
-            type_confidence = min(max(type_scores[most_likely_type] / (len(self.config.CONTRACT_TYPES[most_likely_type]) * 2), 0.5), 0.95)
-        else:
-            most_likely_type = "general"
-            type_confidence = 0.5
-            
-        metadata.detected_contract_type = most_likely_type
-        metadata.contract_type_confidence = type_confidence
-        
-        # Extract dates and parties (simplified)
+        # Detect key dates and parties using regex patterns
         dates_pattern = r'(?:dated|effective|as of|dated as of)\s+(\w+\s+\d{1,2},?\s+\d{4}|\d{1,2}[-/]\d{1,2}[-/]\d{4}|\d{1,2}(?:st|nd|rd|th)?\s+(?:day of\s+)?\w+,?\s+\d{4})'
         parties_pattern = r'(?:between|by and between|among)\s+([^,]+?)\s+(?:and|,)\s+([^,\.]+)'
-        
         dates = re.findall(dates_pattern, text, re.IGNORECASE)
         parties = []
         for match in re.finditer(parties_pattern, text, re.IGNORECASE):
@@ -356,9 +323,22 @@ class ContractAnalyzer:
                 for group in match.groups():
                     if group.strip() and len(group.strip()) > 3:
                         parties.append(group.strip())
+        metadata.extracted_dates = list(set(dates))[:5]
+        metadata.extracted_parties = list(set(parties))[:5]
         
-        metadata.extracted_dates = list(set(dates))[:5]  # Limit to 5 unique dates
-        metadata.extracted_parties = list(set(parties))[:5]  # Limit to 5 unique parties
+        # Classify contract type based on keyword counts
+        type_scores = {}
+        for ctype, keywords in self.config.CONTRACT_TYPES.items():
+            score = sum(len(re.findall(r'\b' + re.escape(keyword) + r'\b', text.lower())) for keyword in keywords)
+            type_scores[ctype] = score
+        if max(type_scores.values(), default=0) > 0:
+            most_likely_type = max(type_scores.items(), key=lambda x: x[1])[0]
+            type_confidence = min(max(type_scores[most_likely_type] / (len(self.config.CONTRACT_TYPES[most_likely_type]) * 2), 0.5), 0.95)
+        else:
+            most_likely_type = "general"
+            type_confidence = 0.5
+        metadata.detected_contract_type = most_likely_type
+        metadata.contract_type_confidence = type_confidence
         
         return metadata
     
@@ -367,72 +347,56 @@ class ContractAnalyzer:
         Extract cross-references between sections.
         
         Args:
-            sections: List of document sections
+            sections: List of document sections.
             
         Returns:
-            Dictionary mapping section IDs to referenced section IDs
+            Dictionary mapping section IDs to referenced section IDs.
         """
         cross_references = {}
         section_map = {section.section_id: section for section in sections}
         section_numbers = {}
-        
-        # Build map of section numbers to sections
         for section in sections:
             if section.section_number:
                 section_numbers[section.section_number] = section.section_id
-        
-        # Patterns to find cross-references
         ref_patterns = [
             r'(?:pursuant to|as provided in|as set forth in|in accordance with|as defined in|subject to|as described in)\s+(?:Section|Article|Paragraph|Clause)\s+(\d+(?:\.\d+)*)',
             r'(?:Section|Article|Paragraph|Clause)\s+(\d+(?:\.\d+)*)\s+(?:hereof|above|below)',
             r'(?:see|refer to)\s+(?:Section|Article|Paragraph|Clause)\s+(\d+(?:\.\d+)*)'
         ]
-        
-        # Compile patterns
         compiled_patterns = [re.compile(pattern, re.IGNORECASE) for pattern in ref_patterns]
-        
-        # Find references in each section
         for section in sections:
             refs = []
             for pattern in compiled_patterns:
                 matches = pattern.findall(section.text)
                 refs.extend(matches)
-                
             if refs:
-                # Find target sections for the references
                 target_sections = []
                 for ref in refs:
                     if ref in section_numbers:
                         target_id = section_numbers[ref]
-                        if target_id != section.section_id:  # Skip self-references
+                        if target_id != section.section_id:
                             target_sections.append(target_id)
-                
                 if target_sections:
                     cross_references[section.section_id] = target_sections
-                    
         return cross_references
     
     def _analyze_risks(self, sections: List[Section]) -> List[RiskItem]:
         """
-        Analyze risks in contract sections.
+        Analyze risks in contract sections using both rule-based and ML methods.
         
         Args:
-            sections: List of document sections
+            sections: List of document sections.
             
         Returns:
-            List of identified risks
+            List of identified risk items.
         """
         risks = []
         
-        # Rule-based risk detection
+        # Rule-based detection
         for i, section in enumerate(sections):
-            # Skip very short sections and headers
             if len(section.text.split()) < 10 or section.is_header:
                 continue
-                
-            # Detect risks using patterns
             section_risks = self.risk_library.detect_risks(section.text)
-            
             for risk in section_risks:
                 risk_item = RiskItem(
                     risk_id=f"risk-{len(risks):03d}",
@@ -449,39 +413,30 @@ class ContractAnalyzer:
                 )
                 risks.append(risk_item)
         
-        # ML-based risk detection if enabled and available
+        # ML-based risk detection (if enabled)
         if self.config.ENABLE_ADVANCED_RISK_DETECTION and len(sections) > 0:
             try:
-                # Get section texts and IDs
                 section_texts = [s.text for s in sections if len(s.text.split()) >= 10 and not s.is_header]
                 section_ids = [s.section_id for s in sections if len(s.text.split()) >= 10 and not s.is_header]
-                
-                if section_texts:  # Only proceed if we have valid sections
-                    # Get risk predictions
+                if section_texts:
                     risk_predictions = self.risk_model.predict_risks(
                         section_texts, 
                         threshold=self.config.RISK_CONFIDENCE_THRESHOLD
                     )
-                    
-                    # Convert predictions to risk items
                     for prediction in risk_predictions:
-                        # Skip if we already have a rule-based detection for this risk in this section
                         section_idx = prediction['text_idx']
                         if section_idx < len(section_ids):
                             section_id = section_ids[section_idx]
                             risk_name = prediction['risk_name']
-                            
                             if any(r.section_id == section_id and r.risk_name.lower() == risk_name.lower() for r in risks):
                                 continue
-                            
-                            # Create risk item
                             risk_item = RiskItem(
                                 risk_id=f"risk-{len(risks):03d}",
                                 section_id=section_id,
                                 risk_name=risk_name,
                                 risk_level=prediction['risk_level'],
                                 risk_category=prediction['risk_category'],
-                                risk_description=f"ML model detected a potential {risk_name} risk in this section.",
+                                risk_description=f"ML detected potential {risk_name} risk in this section.",
                                 context=section_texts[section_idx][:300] + "...",
                                 confidence=prediction['confidence'],
                                 detection_method='ml'
@@ -489,40 +444,24 @@ class ContractAnalyzer:
                             risks.append(risk_item)
             except Exception as e:
                 logger.warning(f"Error in ML risk detection: {str(e)}")
-                # Continue with rule-based risks only
-        
         return risks
     
     def _generate_summary(self, text: str, sections: List[Section], contract_type: str) -> ContractSummary:
         """
-        Generate summary of contract.
+        Generate a summary of the contract using both section summaries and full-text summarization.
         
         Args:
-            text: Full document text
-            sections: List of document sections
-            contract_type: Type of contract
+            text: Full document text.
+            sections: List of document sections.
+            contract_type: Detected contract type.
             
         Returns:
-            Contract summary
+            ContractSummary object.
         """
-        # Extract important sections for summarization
-        important_sections = []
-        for section in sections:
-            # Include sections with important types or with significant content
-            if (section.section_type in ["covenant", "representation", "liability", 
-                                         "termination", "payment", "definition"] or
-                len(section.text.split()) > 100):
-                important_sections.append(section)
-        
-        # Limit to a reasonable number of sections to summarize
+        important_sections = [s for s in sections if s.section_type in ["covenant", "representation", "liability", 
+                                                                        "termination", "payment", "definition"] or len(s.text.split()) > 100]
         if len(important_sections) > 10:
-            important_sections = sorted(
-                important_sections, 
-                key=lambda s: len(s.text.split()), 
-                reverse=True
-            )[:10]
-        
-        # Generate section summaries
+            important_sections = sorted(important_sections, key=lambda s: len(s.text.split()), reverse=True)[:10]
         section_summaries = []
         if important_sections:
             section_texts = [section.text for section in important_sections]
@@ -531,26 +470,17 @@ class ContractAnalyzer:
                 max_length=self.config.MAX_SUMMARY_LENGTH,
                 min_length=self.config.MIN_SUMMARY_LENGTH
             )
-            
-            for i, (section, summary) in enumerate(zip(important_sections, summaries)):
-                # Skip empty summaries
-                if not summary.strip():
-                    continue
-                    
-                section_summaries.append({
-                    "section_id": section.section_id,
-                    "title": section.title,
-                    "summary": summary
-                })
-        
-        # Generate overall summary
+            for section, summary in zip(important_sections, summaries):
+                if summary.strip():
+                    section_summaries.append({
+                        "section_id": section.section_id,
+                        "title": section.title,
+                        "summary": summary
+                    })
         overall_summary = "Contract analysis could not generate a summary."
         try:
             if len(text) > 10000:
-                # For very long documents, summarize based on section summaries
-                combined_text = " ".join([
-                    f"{s['title']}: {s['summary']}" for s in section_summaries
-                ])
+                combined_text = " ".join([f"{s['title']}: {s['summary']}" for s in section_summaries])
                 if combined_text:
                     summary_result = self.summarizer_model.summarize(
                         [combined_text],
@@ -560,34 +490,25 @@ class ContractAnalyzer:
                     if summary_result and summary_result[0]:
                         overall_summary = summary_result[0]
             else:
-                # For shorter documents, summarize the whole text
                 summary_result = self.summarizer_model.summarize(
-                    [text[:10000]],  # Limit to first 10k chars
+                    [text[:10000]],
                     max_length=self.config.MAX_SUMMARY_LENGTH,
                     min_length=self.config.MIN_SUMMARY_LENGTH
                 )
                 if summary_result and summary_result[0]:
                     overall_summary = summary_result[0]
-                    
-            # Add contract type context if not already mentioned
             if contract_type != "general" and contract_type not in overall_summary.lower():
                 overall_summary = f"This {contract_type} agreement " + overall_summary[0].lower() + overall_summary[1:]
-                
         except Exception as e:
             logger.error(f"Error generating summary: {str(e)}")
             overall_summary = f"This appears to be a {contract_type} agreement. The system was unable to generate a detailed summary."
         
-        # Generate key points
         key_points = self._generate_key_points(text, sections)
-        
-        # Get contract basics
         contract_basics = {
             "type": contract_type,
             "sections_count": len(sections),
             "estimated_length": "short" if len(text) < 5000 else "medium" if len(text) < 20000 else "long"
         }
-        
-        # Return the summary
         return ContractSummary(
             overall_summary=overall_summary,
             key_points=key_points,
@@ -601,19 +522,17 @@ class ContractAnalyzer:
         Generate key points from contract text.
         
         Args:
-            text: Full document text
-            sections: List of document sections
+            text: Full document text.
+            sections: List of document sections.
             
         Returns:
-            List of key points
+            List of KeyPoint objects.
         """
         key_points = []
         point_id_counter = 0
         
-        # Extract key contract terms
         extracted_info = self._extract_information(text)
         
-        # Add key terms as points
         for term_type, info in extracted_info.items():
             if info and info.get('value'):
                 key_points.append(KeyPoint(
@@ -625,15 +544,9 @@ class ContractAnalyzer:
                 ))
                 point_id_counter += 1
         
-        # Add important section topics
-        important_sections = []
-        for section in sections:
-            if section.section_type in ["covenant", "representation", "termination", 
-                                       "payment", "liability"]:
-                important_sections.append(section)
-        
-        # Add top sections by importance
-        for i, section in enumerate(important_sections[:5]):  # Limit to 5
+        important_sections = [s for s in sections if s.section_type in ["covenant", "representation", "termination", 
+                                                                        "payment", "liability"]]
+        for section in important_sections[:5]:
             key_points.append(KeyPoint(
                 point_id=f"point-{point_id_counter:03d}",
                 category="section",
@@ -648,27 +561,32 @@ class ContractAnalyzer:
     
     def _extract_information(self, text: str) -> Dict[str, Dict[str, Any]]:
         """
-        Extract structured information from contract.
+        Extract structured information from the contract.
         
         Args:
-            text: Document text
+            text: Document text.
             
         Returns:
-            Extracted information
+            Dictionary with extraction results.
         """
-        # Use extractor model to extract key information
-        # Focus on a core set of important information
         extraction_types = [
             "parties", "effective_date", "termination_date", 
             "governing_law", "venue", "notice_period"
         ]
-        
         try:
             extracted_info = self.extractor_model.extract_information(text, extraction_types)
         except Exception as e:
             logger.error(f"Error in information extraction: {str(e)}")
-            # Create empty extraction result
             extracted_info = {ext_type: {"value": "", "confidence": 0.0, "method": "none"} 
-                             for ext_type in extraction_types}
-        
+                              for ext_type in extraction_types}
         return extracted_info
+
+if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(description="Run Contract Analyzer on a sample file")
+    parser.add_argument("file", help="Path to contract file")
+    args = parser.parse_args()
+    analyzer = ContractAnalyzer()
+    loop = asyncio.get_event_loop()
+    result = loop.run_until_complete(analyzer.analyze_document(file_content=open(args.file, 'rb').read(), filename=args.file))
+    print(json.dumps(asdict(result), indent=2))

@@ -1,5 +1,10 @@
 """
 Text processor for contract analysis.
+
+This module should be imported from the contract-analyzer root directory:
+    from src.preprocessor.text_processor import TextProcessor
+
+If running scripts that use this module, run them from the contract-analyzer root directory.
 """
 
 import regex
@@ -111,8 +116,7 @@ class TextProcessor:
         
         # Remove page numbers and headers/footers that might appear in formatted documents
         text = regex.sub(r'\n\s*\d+\s*\n', '\n', text)  # Standalone page numbers
-        text = regex.sub(r'\n\s*Page\s+\d+\s+of\s+\d+\s*\n', '\n', regex.IGNORECASE)  # Page X of Y format
-        
+        text = regex.sub(r'\n\s*Page\s+\d+\s+of\s+\d+\s*\n', '\n', text, flags=regex.IGNORECASE)        
         return text.strip()
     
     def segment_into_paragraphs(self, text: str) -> List[str]:

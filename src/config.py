@@ -34,6 +34,9 @@ class Config:
     MAX_SUMMARY_LENGTH: int = 300
     MIN_SUMMARY_LENGTH: int = 75
     EMBEDDING_DIMENSION: int = 768
+
+    MIN_RISK_TEXT_LENGTH: int = 10  # Lowered from 20; adjust as needed
+
     
     # Device settings
     USE_CUDA: bool = torch.cuda.is_available()
@@ -49,6 +52,8 @@ class Config:
     
     # Risk detection thresholds
     RISK_CONFIDENCE_THRESHOLD: float = 0.6
+
+
     
     # Contract types for classification
     CONTRACT_TYPES: Dict[str, List[str]] = field(default_factory=lambda: {

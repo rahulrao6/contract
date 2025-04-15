@@ -11,7 +11,7 @@ from fastapi.responses import JSONResponse
 from src.config import Config
 from src.contract_analyzer import ContractAnalyzer, AnalysisResult
 from src.api.models import AnalyzeTextRequest, AnalysisResponse, DetailedAnalysisResponse
-from src.utils import asdict
+from dataclasses import asdict
 
 logger = logging.getLogger(__name__)
 

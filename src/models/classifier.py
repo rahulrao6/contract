@@ -254,7 +254,9 @@ class ContractClassifier(ContractMLModel):
         # Data collator
         data_collator = DataCollatorWithPadding(tokenizer=self.tokenizer)
         
-        # Define training arguments
+
+# Replace your previous TrainingArguments block with something like this:
+
         training_args = TrainingArguments(
             output_dir=output_dir,
             num_train_epochs=epochs,
@@ -262,14 +264,19 @@ class ContractClassifier(ContractMLModel):
             per_device_eval_batch_size=batch_size,
             learning_rate=learning_rate,
             weight_decay=0.01,
-            logging_dir=f"{output_dir}/logs",
+            logging_dir=os.path.join(output_dir, "logs"),
             logging_steps=10,
-            evaluation_strategy="epoch",
-            save_strategy="epoch",
+            eval_strategy="steps",           # Use eval_strategy
+            eval_steps=500,
+            save_strategy="steps",           # Must match eval_strategy for load_best_model_at_end
+            save_steps=500,
             load_best_model_at_end=True,
             metric_for_best_model="f1",
             greater_is_better=True,
+            do_eval=True
         )
+
+
         
         # Define compute_metrics function
         def compute_metrics(eval_pred):

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """
 Main entry point for Contract Analyzer.
 """
@@ -6,11 +7,11 @@ import os
 import logging
 import asyncio
 import argparse
-from typing import Dict, Any, Optional
+import json
 
 from src.config import Config
 from src.contract_analyzer import ContractAnalyzer
-from src.api.server import create_app, run_server
+from src.api.server import create_app, run_server  # Ensure these are correct for your API
 
 # Configure logging
 logging.basicConfig(
@@ -20,30 +21,22 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-async def analyze_file(file_path: str, config: Optional[Config] = None) -> Dict[str, Any]:
+async def analyze_file(file_path: str, config: Config) -> dict:
     """
-    Analyze a contract file from the command line.
+    Analyze a contract file and return results.
     
     Args:
-        file_path: Path to contract file
-        config: Optional configuration
+        file_path: Path to contract file.
+        config: Configuration settings.
         
     Returns:
-        Analysis result as dictionary
+        Dictionary of analysis results.
     """
-    if config is None:
-        config = Config()
-        
     analyzer = ContractAnalyzer(config)
-    
-    # Read file
     with open(file_path, 'rb') as f:
         file_content = f.read()
-    
-    # Analyze
     filename = os.path.basename(file_path)
     result = await analyzer.analyze_document(file_content=file_content, filename=filename)
-    
     return {
         "contract_id": result.contract_id,
         "contract_type": result.metadata.detected_contract_type,
@@ -57,53 +50,38 @@ async def analyze_file(file_path: str, config: Optional[Config] = None) -> Dict[
                 "category": risk.risk_category,
                 "description": risk.risk_description
             }
-            for risk in result.risks[:5]  # Top 5 risks
+            for risk in result.risks[:5]
         ]
     }
 
 def main():
-    """Main entry point."""
     parser = argparse.ArgumentParser(description="Contract Analyzer")
-    
-    # Define subparsers
     subparsers = parser.add_subparsers(dest="command", help="Command to run")
-    
-    # API server command
     api_parser = subparsers.add_parser("api", help="Run API server")
-    
-    # Analyze command
     analyze_parser = subparsers.add_parser("analyze", help="Analyze a contract file")
     analyze_parser.add_argument("file", help="Path to contract file")
     analyze_parser.add_argument("--output", "-o", help="Output file for analysis results")
-    
-    # Parse arguments
     args = parser.parse_args()
     
-    # Process command
+    config = Config()
+    
     if args.command == "api":
-        # Run API server
         run_server()
     elif args.command == "analyze":
-        # Analyze file
         if not os.path.exists(args.file):
             print(f"Error: File not found: {args.file}")
             return
-            
-        # Run analysis
-        result = asyncio.run(analyze_file(args.file))
-        
-        # Output results
+        result = asyncio.run(analyze_file(args.file, config))
         if args.output:
-            import json
             with open(args.output, 'w') as f:
                 json.dump(result, f, indent=2)
             print(f"Analysis saved to {args.output}")
         else:
-            import json
             print(json.dumps(result, indent=2))
     else:
-        # Default to show help
         parser.print_help()
 
 if __name__ == "__main__":
     main()
+
+app = create_app(Config())
